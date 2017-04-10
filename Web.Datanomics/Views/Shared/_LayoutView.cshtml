@@ -1,0 +1,24 @@
+﻿@{ 
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!--=== Breadcrumbs ===-->
+<div class="breadcrumbs">
+    <div class="container">
+        <h1 class="pull-left">View</h1>
+        <ul class="pull-right breadcrumb">
+            <li><a href="@Url.Action("Index","Home")">Home</a></li>
+            <li class="active"><a href="@Url.Action("Index","View")">View</a></li>
+        </ul>
+    </div>
+</div><!--/breadcrumbs-->
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            @Html.Action("Category", "Menu")
+        </div>
+        <div class="col-md-9">
+            @RenderBody()
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,237 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title - Datanomics</title>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width" />
+
+    <!-- CSS Global Compulsory -->
+        @*@Styles.Render("~/Content/bootstrapcss")*@
+     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/style.css" rel="stylesheet" />
+    <!-- CSS Header and Footer -->
+    <link href="~/Content/headers/header-default.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/Content/footers/footer-v1.css">
+    <!-- CSS Implementing Plugins -->
+    <link rel="stylesheet" href="~/plugins/animate.css">
+    <link rel="stylesheet" href="~/plugins/line-icons/line-icons.css">
+    <link rel="stylesheet" href="~/plugins/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/plugins/parallax-slider/css/parallax-slider.css">
+    <link rel="stylesheet" href="~/plugins/owl-carousel/owl-carousel/owl.carousel.css">
+    <!-- CSS Theme -->
+    <link rel="stylesheet" href="~/Content/theme-colors/orange.css" id="style_color">
+    <link rel="stylesheet" href="~/Content/theme-skins/dark.css">
+    <!-- CSS Customization -->
+    <link rel="stylesheet" href="~/Content/custom.css">
+
+    <style>
+
+    </style>
+</head>
+<body>
+    <!--=== Style Switcher ===-->
+    @*@Html.Partial("_StyleSwitcherPartial")*@
+    <!--/style-switcher-->
+    <!--=== End Style Switcher ===-->
+    <!--=== Header ===-->
+    <div class="header">
+        <div class="container">
+            <!-- Logo -->
+            <div class="logo" style="max-width:150px;">
+                <a href="@Url.Action("Index","Home")">
+                    <img  class="img-responsive" src="~/Images/logo.png" alt="Logo">
+                </a>
+            </div>
+            <!-- End Logo -->
+            <!-- Topbar -->
+            <div class="topbar">
+                <ul class="loginbar pull-right">
+                    <li class="hoverSelector">
+                        <i class="fa fa-globe"></i>
+                        <a>Languages</a>
+                        <ul class="languages hoverSelectorBlock">
+                            <li class="active">
+                                <a href="#">English <i class="fa fa-check"></i></a>
+                            </li>
+                            <li><a href="#">Vietnamese</a></li>
+                        </ul>
+                    </li>
+                    <li class="topbar-devider"></li>
+                    <li><a href="@Url.Action("Index","View", new { @CategoriesID = 3})">Careers</a></li>
+                    <li class="topbar-devider"></li>
+                    <li><a href="@Url.Action("Contact","Home")">Contact us</a></li>
+                    <li class="topbar-devider"></li>
+                    @Html.Partial("_LoginPartial")
+                </ul>
+            </div>
+            <!-- End Topbar -->
+            <!-- Toggle get grouped for better mobile display -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="fa fa-bars"></span>
+            </button>
+            <!-- End Toggle -->
+        </div><!--/end container-->
+            @*@Html.Partial("_MenuPartial")*@
+            @Html.Action("Menu", "Menu")
+        @*@Html.Action("Categories", "Menu", new { MenuId = 1})*@
+    </div>
+    <!--=== End Header ===-->
+
+    <div id="body">
+        @RenderBody()
+    </div>
+
+    <footer>
+        <!--=== Footer Version 1 ===-->
+        <div class="footer-v1">
+            <div class="footer">
+                <div class="container">
+                    <div class="row">
+                        <!-- About -->
+                        <div class="col-md-4 md-margin-bottom-40">
+                            @*<a href="@Url.Action("Index","Home")"><img id="logo-footer" class="footer-logo" style="max-width:250px;" src="~/Images/logo_white.png" alt=""></a>*@
+                            <p>Success of companies will depend heavily on the way they manage their data.</p>
+                            <p>Effective utilization of data is fast becoming centerpiece of organizational business model and strategy </p>
+                        </div><!--/col-md-3-->
+                        @*<!-- End About -->
+                        <!-- Latest -->
+                        <div class="col-md-3 md-margin-bottom-40">
+                            <div class="posts">
+                                <div class="headline"><h2>Latest Posts</h2></div>
+                                <ul class="list-unstyled latest-list">
+                                    <li>
+                                        <a href="#">Incredible content</a>
+                                        <small>May 8, 2014</small>
+                                    </li>
+                                    <li>
+                                        <a href="#">Best shoots</a>
+                                        <small>June 23, 2014</small>
+                                    </li>
+                                    <li>
+                                        <a href="#">New Terms and Conditions</a>
+                                        <small>September 15, 2014</small>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div><!--/col-md-3-->
+                        <!-- End Latest -->*@
+                        <!-- Link List -->
+                        <div class="col-md-4 md-margin-bottom-40">
+                            <div class="headline"><h2>Useful Links</h2></div>
+                            <ul class="list-unstyled link-list">
+                                <li><a href="@Url.Action("Index","View", new { @CategoriesID = 3})">Careers</a></li>
+                                <li><a href="@Url.Action("Contact","Home")">Contact us</a></li>
+                            </ul>
+                        </div><!--/col-md-3-->
+                        <!-- End Link List -->
+                        <!-- Address -->
+                        <div class="col-md-4 map-img md-margin-bottom-40">
+                            <div class="headline"><h2>Contact Us</h2></div>
+                            <address class="md-margin-bottom-40">
+                                41, Phu Kieu 1 <br />
+                                Kieu Mai, Hanoi <br />
+                                Phone: +84 436 436 999 <br />
+                                Fax: +84 436 436 999 <br />
+                                Email: <a href="mailto:contact@datanomics.com.vn" class="">contact@datanomics.com.vn</a>
+                            </address>
+                        </div><!--/col-md-3-->
+                        <!-- End Address -->
+                    </div>
+                </div>
+            </div><!--/footer-->
+            <div class="copyright">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p>
+                                Copyright &copy; 2007 - 2014 Datanomics Inc. All rights reserved.
+                                <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a>
+                            </p>
+                        </div>
+                        <!-- Social Links -->
+                        <div class="col-md-6">
+                            <ul class="footer-socials list-inline">
+                                <li>
+                                    <a href="#" class="tooltips" data-toggle="tooltip" data-placement="top" title="" data-original-title="Facebook">
+                                        <i class="fa fa-facebook"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="tooltips" data-toggle="tooltip" data-placement="top" title="" data-original-title="Skype">
+                                        <i class="fa fa-skype"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="tooltips" data-toggle="tooltip" data-placement="top" title="" data-original-title="Google Plus">
+                                        <i class="fa fa-google-plus"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="tooltips" data-toggle="tooltip" data-placement="top" title="" data-original-title="Linkedin">
+                                        <i class="fa fa-linkedin"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="tooltips" data-toggle="tooltip" data-placement="top" title="" data-original-title="Pinterest">
+                                        <i class="fa fa-pinterest"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="tooltips" data-toggle="tooltip" data-placement="top" title="" data-original-title="Twitter">
+                                        <i class="fa fa-twitter"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="tooltips" data-toggle="tooltip" data-placement="top" title="" data-original-title="Dribbble">
+                                        <i class="fa fa-dribbble"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- End Social Links -->
+                    </div>
+                </div>
+            </div><!--/copyright-->
+        </div>
+        <!--=== End Footer Version 1 ===-->
+    </footer>
+        @*@Scripts.Render("~/bundles/jquery")*@
+    <script src="~/Scripts/jquery-1.12.4.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    @*@Scripts.Render("~/bundles/bootstrapjs")*@
+    @RenderSection("scripts", required: false)
+
+    <!-- JS Global Compulsory -->
+    <script type="text/javascript" src="~/plugins/jquery/jquery-migrate.min.js"></script>
+    <!-- JS Implementing Plugins -->
+    <script type="text/javascript" src="~/plugins/back-to-top.js"></script>
+    <script type="text/javascript" src="~/plugins/smoothScroll.js"></script>
+    <script type="text/javascript" src="~/plugins/parallax-slider/js/modernizr.js"></script>
+    <script type="text/javascript" src="~/plugins/parallax-slider/js/jquery.cslider.js"></script>
+    <script type="text/javascript" src="~/plugins/owl-carousel/owl-carousel/owl.carousel.js"></script>
+    <!-- JS Customization -->
+    <script type="text/javascript" src="~/Scripts/custom.js"></script>
+    <!-- JS Page Level -->
+    <script type="text/javascript" src="~/Scripts/app.js"></script>
+    <script type="text/javascript" src="~/Scripts/plugins/owl-carousel.js"></script>
+    <script type="text/javascript" src="~/Scripts/plugins/style-switcher.js"></script>
+    <script type="text/javascript" src="~/Scripts/plugins/parallax-slider.js"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(function () {
+            App.init();
+            OwlCarousel.initOwlCarousel();
+            StyleSwitcher.initStyleSwitcher();
+            ParallaxSlider.initParallaxSlider();
+        });
+    </script>
+    <!--[if lt IE 9]>
+        <script src="assets/plugins/respond.js"></script>
+        <script src="assets/plugins/html5shiv.js"></script>
+        <script src="assets/plugins/placeholder-IE-fixes.js"></script>
+    <![endif]-->
+
+</body>
+</html>

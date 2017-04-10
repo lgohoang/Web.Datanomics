@@ -1,0 +1,194 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+
+<!--=== Slider ===-->
+<div class="slider-inner">
+    <div id="da-slider" class="da-slider">
+
+        @foreach (var sl in ViewBag.Slider)
+        {
+            <div class="da-slide">
+                <a href="@Url.Action("Post","View", new { @ID = @sl.ID})"><h2><i>@sl.Title</i></h2></a>
+                <p>
+                    <i class="da-des">
+                        @sl.Describe
+                    </i>
+                </p>
+                <div class="da-img"><img class="da-imgs img-responsive" src="@sl.Image" alt=""></div>
+            </div>
+        }
+
+        <div class="da-arrows">
+            <span class="da-arrows-prev"></span>
+            <span class="da-arrows-next"></span>
+        </div>
+    </div>
+</div><!--/slider-->
+<!--=== End Slider ===-->
+<!--=== Purchase Block ===-->
+<div class="purchase">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 animated fadeInLeft">
+                <span><b>Our Vision</b></span>
+                <p style="text-align:center; font-size:15px;"><b><i>We aspire to be the partner of choice in your transformation journey and enable you to institutionalize data-driven decision making culture in your organization</i></b></p>
+            </div>
+            @*<div class="col-md-3 btn-buy animated fadeInRight">
+                <a class="btn-u btn-u-lg"><i class="fa fa-arrow-down"></i></a>
+            </div>*@
+        </div>
+    </div>
+</div><!--/row-->
+<!-- End Purchase Block -->
+<!--=== Content Part ===-->
+<div class="container content-sm">
+    <!-- Service Blocks -->
+    @*<div class="headline"><h2>Our Areas Of Expertise</h2></div>
+    <div class="row margin-bottom-30">
+        <div class="col-md-4">
+            <div class="service">
+                <i class="fa fa-sellsy service-icon"></i>
+                <div class="desc">
+                    <h4>Data Strategy</h4>
+                    <p>Need help understanding all the dots on the Gartner Magic Quadrant?</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="service">
+                <i class="fa fa-database service-icon"></i>
+                <div class="desc">
+                    <h4>Data Management, Data Governance</h4>
+                    <p>Data management is the development and execution of architectures, policies, practices and procedures in order to manage the information lifecycle needs of an enterprise in an effective manner</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="service">
+                <i class="fa fa-building service-icon"></i>
+                <div class="desc">
+                    <h4>Business Intelligence/Analytics</h4>
+                    <p>Rapidly deploy BI solutions that meet the specific needs of anyone and everyone who works with data across your enterprise</p>
+                </div>
+            </div>
+        </div>
+    </div>*@
+    <!-- End Service Blokcs -->
+    <!-- Recent Works -->
+    <div class="headline"><h2><b>Our Areas Of Expertise</b></h2></div>
+        @for (int i = 0; i < ViewBag.NumberRow; i++)
+        {
+            <div class="row margin-bottom-20">
+                @for (int j = i * ViewBag.NumberOfRow; j < ViewBag.NumberOfRow * i + 4; j++)
+                {
+                    if (j < ViewBag.Count)
+                    {
+                        <div class="col-md-3 col-sm-6">
+                            <div class="thumbnails thumbnail-style thumbnail-kenburn">
+                                <div class="thumbnail-img">
+                                    <div class="overflow-hidden">
+                                        <img class="img-responsive" src="@ViewBag.Solution_Areas[j].Image" alt="">
+                                    </div>
+                                    <a class="btn-more hover-effect" href="@Url.Action("Post","View", new {@ID = @ViewBag.Solution_Areas[j].ID })">read more +</a>
+                                </div>
+                                <div class="caption">
+                                    <h3><a class="hover-effect" href="@Url.Action("Post","View", new {@ID = @ViewBag.Solution_Areas[j].ID })"><b>@ViewBag.Solution_Areas[j].Title</b></a></h3>
+                                    <p>@ViewBag.Solution_Areas[j].Describe</p>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        break;
+                    }
+
+                }
+            </div>
+        }
+
+    <!-- End Recent Works -->
+    <!-- Info Blokcs -->
+    <div class="row margin-bottom-30">
+        <!-- Welcome Block -->
+        <div class="col-md-8 md-margin-bottom-40">
+            <div class="headline"><h2><b>Who We Are?</b></h2></div>
+            <div class="row">
+                <div class="col-sm-4">
+                    <img class="img-responsive margin-bottom-20" src="~/Images/main/whoweare.png" alt="">
+                </div>
+                <div class="col-sm-8">
+                    <ul class="list-unstyled margin-bottom-20">
+                        <li><i class="fa fa-check color-green"></i> Datanomics is a subsidiary of Technology Solution Miraway Co. Ltd. which was established in 2007</li>
+                        <li><i class="fa fa-check color-green"></i> Aim to be a leading provider of data strategy, data management, data governance & analytics solutions</li>
+                        <li><i class="fa fa-check color-green"></i> Strong team of experts working both onsite and offsite</li>
+                        <li><i class="fa fa-check color-green"></i> Core team members having wide ranging domain experience</li>
+                        <li><i class="fa fa-check color-green"></i> Committed to deliver best professional solutions that cater to our clients’ needs</li>
+                        <li><i class="fa fa-check color-green"></i> Strong partners to strengthen our capabilities</li>
+                    </ul>
+                </div>
+            </div>
+            <blockquote class="hero-unify">
+                <p>We believe that getting value out of data is not only about using the right technology. It’s about building the right foundation in terms of having a vision, a data strategy and a roadmap followed by relentless execution through an optimum use of people, process and technology</p>
+                <small>CEO, Hien Nguyen Quang</small>
+            </blockquote>
+        </div><!--/col-md-8-->
+        <!-- Latest Shots -->
+        <div class="col-md-4">
+            <div class="headline"><h2><b>Latest Posts</b></h2></div>
+            <div id="myCarousel" class="carousel slide carousel-v1">
+                <div class="carousel-inner">
+                    @{
+
+                        var lp = ViewBag.LastedPost;
+                        if (lp != null)
+                        {
+                            <div class="item active">
+                                <img class="carousel-image" src="@lp[0].Image" alt="">
+                                <div class="carousel-caption">
+                                    <a style="text-decoration:none" href="@Url.Action("Post","View", new { @Id = @lp[0].ID})">
+                                        <p>@lp[0].Title</p>
+                                    </a>
+                                </div>
+                            </div>
+                            for (int i = 1; i < lp.Count; i++)
+                            {
+                                <div class="item">
+                                    <img class="carousel-image" src="@lp[i].Image" alt="">
+                                    <div class="carousel-caption">
+                                        <a style="text-decoration:none" href="@Url.Action("Post","View", new { @Id = @lp[i].ID})">
+                                            <p>@lp[i].Title</p>
+                                        </a>
+                                    </div>
+                                </div>
+                            }
+                        }
+                    }
+                </div>
+                <div class="carousel-arrow">
+                    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div><!--/col-md-4-->
+    </div>
+    <!-- End Info Blokcs -->
+    <!-- Owl Clients v1 -->
+    <div class="headline"><h2><b>Our Clients</b></h2></div>
+    <div class="owl-clients-v1">
+        @foreach (var o in ViewBag.OurClients)
+        {
+            <div class="item">
+                <img src="@o.Image" alt="">
+            </div>
+        }
+    </div>
+    <!-- End Owl Clients v1 -->
+</div><!--/container-->
+<!-- End Content Part -->

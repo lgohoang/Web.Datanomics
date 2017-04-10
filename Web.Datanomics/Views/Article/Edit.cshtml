@@ -1,0 +1,88 @@
+﻿@model Web.Datanomics.Models.Article
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <div class="row">
+        <div class="col-md-3">
+            <h1 class="">Edit Article</h1>
+        </div>
+        <div class="col-md-3 pull-right">
+            <h3>
+                <button type="submit" class="pull-right btn-default btn-primary">Save</button>
+            </h3>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-3">
+            @Html.DropDownListFor(m => m.CategoryID, new SelectList(ViewBag.List, "ID", "Name"), new { id = "List", @class = "selectpicker form-control" })
+        </div>
+        <div class="col-md-9">
+            @Html.TextBoxFor(model => model.Title, new { @class = "form-control", @placeholder = "Title" })
+        </div>
+    </div>
+    <div class="row" style="margin-top:10px;">
+        <div class="col-md-3">
+            <div class="row">
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.Image, new { @class = "form-control", @placeholder = "Image - show in home page" })
+                </div>
+                <div class="col-md-2">
+                    <h5>
+                        <button id="image_upload" type="button" onclick="BrowseServer()" class="pull-right">File</button>
+                    </h5>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-9">
+            @Html.TextBoxFor(model => model.Describe, new { @class = "form-control", @placeholder = "Describe - show in home page, and list" })
+        </div>
+    </div>
+        <div class="row">
+            <div class="col-md-12 editor-field">
+                <hr />
+                @Html.TextAreaFor(model => model.Content, new { @class = "ckeditor" })
+                @Html.ValidationMessageFor(model => model.Content)
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <h3>
+                    <button type="submit" class="btn-default btn-primary">Save</button>
+                </h3>
+                <h3>
+                    @Html.ActionLink("Back to List", "Index")
+                </h3>
+            </div>
+        </div>
+}
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+<script src="~/plugins/ckeditor/ckeditor.js"></script>
+<script src="~/plugins/ckfinder/ckfinder.js"></script>
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        CKEDITOR.replace('ckeditor');
+    });
+
+    function BrowseServer() {
+        var finder = new CKFinder();
+        //finder.basePath = '~/Upload/Article_Images/';
+        finder.selectActionFunction = SetFileField;
+        finder.popup();
+    }
+    function SetFileField(fileUrl) {
+        document.getElementById('Image').value = fileUrl;
+    }
+
+</script>

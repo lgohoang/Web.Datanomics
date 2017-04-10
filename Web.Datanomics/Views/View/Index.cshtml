@@ -1,0 +1,41 @@
+﻿@model Web.Datanomics.Models.Article
+@using PagedList.Mvc;
+@using PagedList; 
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutView.cshtml";
+}
+<link href="~/Content/pages/page_clients.css" rel="stylesheet" />
+<link href="~/Content/PagedList.css" rel="stylesheet" />
+<!--=== Content Part ===-->
+
+
+<div class="headline"><h2>Post List</h2></div>
+
+<!-- End Clients Block-->
+@foreach (var m in ViewBag.OnePageOfProducts)
+{
+    <!-- Clients Block-->
+    <div class="row clients-page">
+        <div class="col-md-2">
+            <img src="@m.Image" class="img-responsive hover-effect" alt="" />
+        </div>
+        <div class="col-md-10">
+            <h3><a href="@Url.Action("Post","View", new { @ID = m.ID})">@m.Title</a></h3>
+            @*<ul class="list-inline">
+                <li><i class="fa fa-user color-green"></i> @Html.Action("GetFullName", "User", new { @id = m.UserID })</li>
+                <li><i class="fa fa-clock-o color-green"></i> @m.CreateTime</li>
+                <li><i class="fa fa-briefcase color-green"></i><a class="linked" href="@Url.Action("Index","View", new { @CategoriesID = @m.CategoryID })"> @Html.Action("GetCategoryName", "Categories", new { @id = m.CategoryID })</a></li>
+            </ul>*@
+            <p>@m.Describe</p>
+        </div>
+    </div>
+    <!-- End Clients Block-->
+}
+ <!-- Pagination -->
+
+<div class="text-center md-margin-bottom-30">
+    @Html.PagedListPager((IPagedList)ViewBag.OnePageOfProducts, Page => Url.Action("Index", new { Page }))
+</div>
+<!-- End Pagination -->
+<!--=== End Content Part ===-->

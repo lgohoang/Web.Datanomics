@@ -1,0 +1,55 @@
+﻿@{
+    ViewBag.Title = "Contact";
+}
+
+
+
+<!--=== Breadcrumbs ===-->
+<div class="breadcrumbs">
+    <div class="container">
+        <h1 class="pull-left">Contacts Us</h1>
+        <ul class="pull-right breadcrumb">
+            <li><a href="@Url.Action("Index","Home")">Home</a></li>
+            <li class="active">Contacts</li>
+        </ul>
+    </div>
+</div><!--/breadcrumbs-->
+<!--=== End Breadcrumbs ===-->
+
+<!--=== Content Part ===-->
+    <div class="container content">
+        <div class="row margin-bottom-60">
+            <div class="col-md-7 col-sm-7">
+            <!-- Google Map -->
+            <div id="map" class="height-450">
+                <img style="width:100%; height:100%;" src="~/Images/mrv_location.png" />
+            </div>
+            <!-- End Google Map -->
+            </div>
+
+            <div class="col-md-4 col-sm-4">
+
+                <!-- Contacts -->
+                <h3>Corporate Office</h3>
+                <ul class="list-unstyled who">
+                    <li><a href="#"><i class="fa fa-home"></i>41, Phu Kieu 1, Kieu Mai, Hanoi</a></li>
+                    <li><a href="#"><i class="fa fa-envelope"></i>contact@datanomics.com.vn</a></li>
+                    <li><a href="#"><i class="fa fa-phone"></i>+84 436 436 999</a></li>
+                    <li><a href="www.datanomics.com.vn"><i class="fa fa-globe"></i>www.datanomics.com.vn</a></li>
+                </ul>
+
+                <hr>
+
+                <!-- Business Hours -->
+                <h3>Business Hours</h3>
+                <ul class="list-unstyled">
+                    <li><strong>Monday-Friday:</strong> 8:00 am to 5:30 pm (Lunch break from 12 noon to 1:30 pm)</li>
+                    <li><strong>Saturday:</strong> 8:00 am to 12 noon</li>
+                    <li><strong>Sunday:</strong> Closed</li>
+                </ul>
+            </div>
+        </div>
+
+       
+    </div><!--/container-->
+    <!--=== End Content Part ===-->

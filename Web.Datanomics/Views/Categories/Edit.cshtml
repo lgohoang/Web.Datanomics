@@ -1,0 +1,74 @@
+﻿@model Web.Datanomics.Models.Categories
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<link href="~/Content/icon-picker/fontawesome-iconpicker.min.css" rel="stylesheet" />
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <div class="row">
+        <div class="col-md-3">
+            <h1 class="">Edit Menu</h1>
+        </div>
+        <div class="col-md-3 pull-right">
+            <h3>
+                <button type="submit" class="pull-right btn-default btn-primary">Save</button>
+            </h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2 margin-bottom-10">
+            @Html.LabelFor(m => m.ParentID)
+            @*<select class="selectpicker form-control">
+                    <option>isParent</option>
+                    <option>Category</option>
+                </select>*@
+            @Html.DropDownListFor(m => m.ParentID, new SelectList(ViewBag.Parent_Id, "Value", "Text"), new { @class = "selectpicker form-control" })
+        </div>
+        <div class="col-md-2">
+            @Html.LabelFor(m => m.IconClass)
+            @Html.TextBoxFor(m => m.IconClass, new { @class = "form-control icp icp-auto", @placeholder = "Icon Name - Picker" })
+        </div>
+        <div class="col-md-3">
+            @Html.LabelFor(m => m.Name)
+            @Html.TextBoxFor(m => m.Name, new { @class = "form-control", @placeholder = "Name of Category" })
+        </div>
+        <div class="col-md-3">
+            @Html.LabelFor(m => m.Title)
+            @Html.TextBoxFor(m => m.Title, new { @class = "form-control", @placeholder = "Title of Category" })
+        </div>
+        <div class="col-md-2">
+            @Html.LabelFor(m => m.MenuID)
+            @Html.DropDownListFor(m => m.MenuID, new SelectList(ViewBag.Menu_Id, "Value", "Text"), new { @class = "selectpicker form-control" })
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2">
+            @Html.LabelFor(m => m.Visible)
+            @Html.DropDownListFor(m => m.Visible, new SelectList(ViewBag.isEnable, "Value", "Text"), new { @class = "selectpicker form-control" })
+        </div>
+        <div class="col-md-2">
+            @Html.LabelFor(m => m.Order)
+            @Html.TextBoxFor(m => m.Order, new { @class = "selectpicker form-control" })
+        </div>
+        <div class="col-md-8">
+            @Html.LabelFor(m => m.Target)
+            @Html.TextBoxFor(m => m.Target, new { @class = "selectpicker form-control", @placeholder = "Link Website (EX: http://websitename.domain)" })
+        </div>
+    </div>
+    <div class="row margin-top-20">
+        <div class="col-md-12">
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    </div>
+}
+
+<script src="~/Scripts/jquery-1.12.4.min.js"></script>
+<script src="~/Scripts/icon-picker/fontawesome-iconpicker.min.js"></script>
+<script>
+    $('.icp').iconpicker();
+</script>

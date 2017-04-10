@@ -1,0 +1,29 @@
+﻿@{
+    ViewBag.Title = "TechnicalExpertise";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!--=== Breadcrumbs ===-->
+<div class="breadcrumbs">
+    <div class="container">
+        <h1 class="pull-left">View</h1>
+        <ul class="pull-right breadcrumb">
+            <li><a href="@Url.Action("Index","Home")">Home</a></li>
+            <li><a href="@Url.Action("Index","View")">View</a></li>
+            <li class="active">TechnicalExpertise</li>
+        </ul>
+    </div>
+</div><!--/breadcrumbs-->
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <h2>Our Technical Expertise</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div>
+                <img class="img-responsive" src="~/Images/clients/te.png" />
+            </div>
+        </div>
+    </div>
+</div>

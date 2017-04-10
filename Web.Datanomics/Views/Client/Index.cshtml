@@ -1,0 +1,55 @@
+﻿@model IEnumerable<Web.Datanomics.Models.OurClients>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<!--Striped Rows-->
+<div class="col-md-12">
+    <div class="panel panel-dark margin-bottom-40">
+        <div class="panel-heading">
+            <h3 class="panel-title">
+                Our Clients
+                <a class="pull-right" href="@Url.Action("Create","Client")">
+                    <i class="fa fa-plus"></i>
+                </a>
+            </h3>
+        </div>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Image</th>
+                    <th>Details</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var m in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => m.ID)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => m.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => m.Image)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => m.Details)
+                        </td>
+                        <td>
+                            <a class="btn btn-xs" href="@Url.Action("Edit", "Client", new { ID = m.ID })"><i class="fa fa-edit"></i> Edit</a>
+                            <a class="btn btn-danger btn-xs" href="@Url.Action("Delete", "Client", new { ID = m.ID })"><i class="fa fa-trash-o"></i> Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+<!--End Striped Rows-->

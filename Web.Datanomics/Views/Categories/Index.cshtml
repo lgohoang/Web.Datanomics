@@ -1,0 +1,78 @@
+﻿@model System.Collections.Generic.List<Web.Datanomics.Models.Categories>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<div class="col-md-12">
+    <div class="panel panel-dark margin-bottom-40">
+        <div class="panel-heading">
+            <h3 class="panel-title">
+             Categories
+                <a class="pull-right" href="@Url.Action("Create","Categories")">
+                    <i class="fa fa-plus"></i>
+                </a>
+            </h3>
+        </div>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Icon</th>
+                    <th>Name</th>
+                    <th>Title</th>
+                    <th>Parent Categories</th>
+                    <th>Order</th>
+                    <th>Target</th>
+                    <th>Visible</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (int i = 0; i < Model.Count; i++)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => Model[i].ID)
+                        </td>
+                        <td>
+                            <i class="fa @Model[i].IconClass"></i>
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => Model[i].Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => Model[i].Title)
+                        </td>
+                        <td>
+                            @if (Model[i].ParentID != 0)
+                            {
+                                @Html.Action("GetCategoryName", "Categories", new { @id = Model[i].ParentID })
+                            }
+                            else if (Model[i].isParent)
+                            {
+                                <label class="label label-danger">isParent</label>
+                            }
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => Model[i].Order)
+                        </td>
+                        <td>
+                            @if (!@Model[i].Target.IsEmpty())
+                            {
+                                @Model[i].Target.Substring(0, Math.Min(@Model[i].Target.Length, 25))
+                            }
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => Model[i].Visible)
+                        </td>
+                        <td>
+                            <a class="btn btn-xs" href="@Url.Action("Edit", "Categories", new { id = Model[i].ID })"><i class="fa fa-edit"></i> Edit</a>
+                            <a class="btn btn-danger btn-xs" href="@Url.Action("Delete", "Categories", new { id = Model[i].ID })"><i class="fa fa-trash-o"></i> Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

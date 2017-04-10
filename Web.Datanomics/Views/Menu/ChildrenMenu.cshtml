@@ -1,0 +1,14 @@
+﻿@model System.Collections.Generic.List<Web.Datanomics.Models.Menu>
+
+@foreach (var item in Model)
+{
+    <div class="col-md-3 equal-height-in">
+        <ul class="list-unstyled equal-height-list">
+            <li><h3>@if (@item.Title.IsEmpty())
+            {@item.Name}
+            else
+            {@item.Title}</h3></li>
+            @Html.Action("Categories", "Menu", new { MenuID = @item.ID })
+        </ul>
+    </div>
+}

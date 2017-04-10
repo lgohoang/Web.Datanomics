@@ -1,0 +1,27 @@
+﻿@model System.Collections.Generic.List<Web.Datanomics.Models.CategoriesView>
+
+@foreach (var item in Model)
+{
+    if (item.isParent && item.MenuIsParent == true)
+    {
+        <li class="dropdown-submenu">
+            <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
+                <i class="fa @item.IconClass"></i> @if (@item.Title.IsEmpty())
+                {@item.Name}
+                else
+                {@item.Title}
+            </a>
+            <ul class="dropdown-menu">
+                @Html.Action("ChildrenCategories", "Menu", new { ParentID = @item.ID })
+            </ul>
+        </li>
+    }
+    else
+    {
+        @*@Html.Action("ChildrenCategories", "Menu", new { ParentID = @item.ID })*@
+        <li><a href="@if (@item.Target.IsEmpty()) { @Url.Action("Index","View", new { @CategoriesID = @item.ID})} else { @item.Target}"><i class="fa @item.IconClass"></i>@if (@item.Title.IsEmpty())
+        {@item.Name}
+        else
+        {@item.Title}</a></li>
+    }
+}

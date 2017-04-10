@@ -1,0 +1,44 @@
+﻿@model System.Collections.Generic.List<Web.Datanomics.Models.Article>
+@{
+    ViewBag.Title = "Post";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="~/Content/pages/page_clients.css" rel="stylesheet" />
+<!--=== Breadcrumbs ===-->
+<div class="breadcrumbs margin-bottom-10">
+    <div class="container">
+        <h1 class="pull-left"></h1>
+        <ul class="pull-right breadcrumb">
+            <li><a href="@Url.Action("Index","Home")">Home</a></li>
+            <li><a href="@Url.Action("Index","View")">View</a></li>
+            <li class="active">Post</li>
+        </ul>
+    </div>
+</div><!--/breadcrumbs-->
+
+<div class="container">
+    @foreach (var m in Model)
+    {
+        <div class="row clients-page margin-bottom-10">
+            <div class="col-md-2">
+                <img src="@m.Image" class="img-responsive hover-effect" alt="" />
+            </div>
+            <div class="col-md-10">
+                <h3><b>@m.Title</b></h3>
+                <ul class="list-inline">
+                    @*<li><i class="fa fa-user color-green"></i> @Html.Action("GetFullName", "User", new { @id = m.UserID })</li>
+                    <li><i class="fa fa-clock-o color-green"></i> @m.CreateTime</li>
+                    <li><i class="fa fa-briefcase color-green"></i><a class="linked" href="#"> @Html.Action("GetCategoryName", "Categories", new { @id = m.CategoryID })</a></li>*@
+                </ul>
+                <p>@m.Describe</p>
+            </div>
+        </div>
+        @*<hr />*@
+        <div class="row">
+            <div class="col-md-12">
+                @Html.Raw(@m.Content)
+            </div>
+        </div>
+        <hr />
+    }
+</div>

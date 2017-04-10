@@ -1,0 +1,75 @@
+﻿@model Web.Datanomics.Models.OurClients
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <div class="row">
+        <div class="col-md-3">
+            <h1 class="">Our Client Edit</h1>
+        </div>
+        <div class="col-md-3 pull-right">
+            <h3>
+                <button type="submit" class="pull-right btn-default btn-primary">Save</button>
+            </h3>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4">
+            @Html.TextBoxFor(model => model.Name, new { @class = "form-control", @placeholder = "Client Name" })
+        </div>
+        <div class="col-md-4">
+            <div class="row">
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.Image, new { @class = "form-control", @placeholder = "Image - show in home page" })
+                </div>
+                <div class="col-md-2">
+                    <h5>
+                        <button id="image_upload" type="button" onclick="BrowseServer()" class="pull-right">File</button>
+                    </h5>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            @Html.TextBoxFor(model => model.Details, new { @class = "form-control", @placeholder = "Client Details" })
+        </div>
+    </div>
+    <div class="row" style="margin-top:10px;">
+
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <h3>
+                <button type="submit" class="btn-default btn-primary">Save</button>
+            </h3>
+            <h3>
+                @Html.ActionLink("Back to List", "Index")
+            </h3>
+        </div>
+    </div>
+}
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+<script src="~/plugins/ckfinder/ckfinder.js"></script>
+
+<script type="text/javascript">
+
+    function BrowseServer() {
+        var finder = new CKFinder();
+        //finder.basePath = '~/Upload/Article_Images/';
+        finder.selectActionFunction = SetFileField;
+        finder.popup();
+    }
+    function SetFileField(fileUrl) {
+        document.getElementById('Image').value = fileUrl;
+    }
+
+</script>

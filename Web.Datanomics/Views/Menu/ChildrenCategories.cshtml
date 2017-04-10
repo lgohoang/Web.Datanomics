@@ -1,0 +1,7 @@
+﻿@model System.Collections.Generic.List<Web.Datanomics.Models.Categories>
+
+@foreach (var item in Model)
+{
+    <li><a href="@item.Target"><i class="fa @item.IconClass"></i> @if (@item.Title.IsEmpty()){@item.Name}else{@item.Title}</a></li>
+    @Html.Action("ChildrenCategories", "Menu", new { ParentID = @item.ID })
+}

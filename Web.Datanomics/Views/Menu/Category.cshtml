@@ -1,0 +1,18 @@
+﻿@model System.Collections.Generic.List<Web.Datanomics.Models.Categories>
+
+<div class="who margin-bottom-30">
+    <div class="headline"><h2>Category</h2></div>
+    <ul class="nav nav-pils nav-stacked">
+        @foreach (var item in Model)
+        {
+            <li>
+                <a href="@Url.Action("Index","View", new { @CategoriesID = @item.ID})">
+                    <i class="fa @item.IconClass"></i>@if (@item.Title.IsEmpty())
+                        {@item.Name}
+                        else
+                        {@item.Title}
+                </a>
+        </li>
+        }
+    </ul>
+</div>

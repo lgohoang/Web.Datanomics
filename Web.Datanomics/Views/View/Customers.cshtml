@@ -1,0 +1,31 @@
+﻿@{
+    ViewBag.Title = "Customers";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="breadcrumbs">
+    <div class="container">
+        <h1 class="pull-left">View</h1>
+        <ul class="pull-right breadcrumb">
+            <li><a href="@Url.Action("Index","Home")">Home</a></li>
+            <li><a href="@Url.Action("Index","View")">View</a></li>
+            <li class="active">Customers</li>
+        </ul>
+    </div>
+</div><!--/breadcrumbs-->
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Some typical customers and partners MIRAWAY deployed</h2>
+        </div>
+    </div>
+    <hr />
+    <div class="row">
+        <div class="col-md-2 col-md-offset-4">
+            <img class="img-responsive" src="~/Images/clients/vpbank.png" />
+        </div>
+        <div class="col-md-2">
+            <img class="img-responsive" src="~/Images/clients/miraway.png" />
+        </div>
+    </div>
+    <hr />
+</div>

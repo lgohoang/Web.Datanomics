@@ -1,0 +1,62 @@
+﻿@model Web.Datanomics.Models.Menu
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <div class="row">
+        <div class="col-md-3">
+            <h1 class="">Edit Menu</h1>
+        </div>
+        <div class="col-md-3 pull-right">
+            <h3>
+                <button type="submit" class="pull-right btn-default btn-primary">Save</button>
+            </h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4 margin-bottom-10">
+            @Html.LabelFor(m => m.ParentID)
+            @Html.DropDownListFor(m => m.ParentID, new SelectList(ViewBag.List, "Value", "Text"), new { @class = "selectpicker form-control" })
+        </div>
+        <div class="col-md-4">
+            @Html.LabelFor(m => m.Name)
+            @Html.TextBoxFor(m => m.Name, new { @class = "form-control", @placeholder = "Name of Menu" })
+        </div>
+        <div class="col-md-4">
+            @Html.LabelFor(m => m.Title)
+            @Html.TextBoxFor(m => m.Title, new { @class = "form-control", @placeholder = "Title of Menu" })
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2">
+            @Html.LabelFor(m => m.isDropdown)
+            @Html.DropDownListFor(m => m.isDropdown, new SelectList(ViewBag.isEnable, "Value", "Text"), new { @class = "selectpicker form-control" })
+        </div>
+        <div class="col-md-2">
+            @Html.LabelFor(m => m.isGroup)
+            @Html.DropDownListFor(m => m.isGroup, new SelectList(ViewBag.isEnable, "Value", "Text"), new { @class = "selectpicker form-control" })
+        </div>
+        <div class="col-md-2">
+            @Html.LabelFor(m => m.Visible)
+            @Html.DropDownListFor(m => m.Visible, new SelectList(ViewBag.isEnable, "Value", "Text"), new { @class = "selectpicker form-control" })
+        </div>
+        <div class="col-md-2">
+            @Html.LabelFor(m => m.Order)
+            @Html.TextBoxFor(m => m.Order, new { @class = "selectpicker form-control" })
+        </div>
+        <div class="col-md-4">
+            @Html.LabelFor(m => m.Target)
+            @Html.TextBoxFor(m => m.Target, new { @class = "selectpicker form-control" })
+        </div>
+    </div>
+    <div class="row margin-top-20">
+        <div class="col-md-12">
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    </div>
+}
